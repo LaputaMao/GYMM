@@ -12,28 +12,32 @@
       <el-form :model="param" status-icon :rules="rules" ref="upform" label-width="100px" class="demo-ruleForm">
         <!-- 上传用户名 -->
 
-        <el-form-item label="健身房编号" prop="gym_id">
+        <!-- <el-form-item label="健身房编号" prop="gym_id">
           <el-input v-model="param.gym_id" placeholder="id"></el-input>
+        </el-form-item> -->
+
+        <el-form-item label="健身房名称" prop="name">
+          <el-input v-model="param.name" placeholder="name"></el-input>
         </el-form-item>
 
-        <el-form-item label="健身房名称" prop="gym_name">
-          <el-input v-model="param.gym_name" placeholder="name"></el-input>
+        <el-form-item label="健身房描述" prop="introduction">
+          <el-input v-model="param.introduction" placeholder="描述"></el-input>
         </el-form-item>
 
-        <el-form-item label="健身房描述" prop="gym_description">
-          <el-input v-model="param.gym_description" placeholder="描述"></el-input>
+        <el-form-item label="健身房证件号" prop="adcode">
+          <el-input v-model="param.adcode" placeholder="证件号"></el-input>
         </el-form-item>
 
-        <el-form-item label="健身房证件号" prop="gym_certificate">
-          <el-input v-model="param.gym_certificate" placeholder="证件号"></el-input>
+        <el-form-item label="地址" prop="detailLocation">
+          <el-input v-model="param.detailLocation" placeholder="地址"></el-input>
         </el-form-item>
 
-        <el-form-item label="地址" prop="gym_address">
-          <el-input v-model="param.gym_address" placeholder="地址"></el-input>
+        <el-form-item label="电话" prop="mainPhone">
+          <el-input v-model="param.mainPhone" placeholder="opentime"></el-input>
         </el-form-item>
 
-        <el-form-item label="开放时间" prop="gym_opentime">
-          <el-input v-model="param.gym_opentime" placeholder="opentime"></el-input>
+        <el-form-item label="备用电话" prop="sparePhone">
+          <el-input v-model="param.sparePhone" placeholder="opentime"></el-input>
         </el-form-item>
 
         <el-form-item label="场地1" prop="area_1">
@@ -81,13 +85,13 @@ export default {
   setup() {
     const router = useRouter();
     const param = reactive({
-      gym_id: '100001001010',
-      gym_name: 'sparkGYM',
-      gym_description: 'this gym',
-      gym_certificate: '0110100010101',
-      gym_address: '北京海淀区',
-      gym_opentime: '9：00-21：00',
-      area_number: '3',
+      // gym_id: '100001001010',
+      name: 'sparkGYM',
+      introduction: 'this gym',
+      adcode: '0110100010101',
+      detailLocation: '北京海淀区',
+      mainPhone: '123456',
+      sparePhone: '1234567',
       area_data: [
         { name: "力量区", description: "this" },
         { name: "有氧区", description: "this" },
@@ -108,13 +112,13 @@ export default {
       ]
     };
     const resetForm = () => {
-      param.area_number = '',
-        param.gym_address = '',
-        param.gym_certificate = '',
-        param.gym_description = '',
-        param.gym_id = '',
-        param.gym_name = '',
-        param.gym_opentime = ''
+      // param.area_number = '',
+      //   param.gym_address = '',
+      //   param.gym_certificate = '',
+      //   param.gym_description = '',
+      //   param.gym_id = '',
+      //   param.gym_name = '',
+      //   param.gym_opentime = ''
 
     };
 
@@ -123,18 +127,15 @@ export default {
       upform.value.validate((valid) => {
         if (valid) {
           // alert('submit!');
-          ElMessage.success("注册成功！");
-          router.push("/disastershow");
-
-          // _UpForm();
+          // ElMessage.success("注册成功！");
+          // router.push("/disastershow");
+          _UpForm();
         } else {
           console.log('error submit!!');
           return false;
         }
       });
-
     };
-
 
     const _UpForm = () => {
       console.log(param);
