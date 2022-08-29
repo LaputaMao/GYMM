@@ -9,7 +9,7 @@ export default {
      server: {
         proxy: {
        '/api': {
-       target: 'http://api.uphold.tongtu.xyz/',    // 目标接口前缀
+       target: 'http://120.53.102.205/',    // 目标接口前缀
         //ws: true,       //  代理webscoked
         changeOrigin: true,   // 开启跨域
        rewrite: (path) => path.replace(/\/api/, '')  // 路径重写

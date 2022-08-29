@@ -69,7 +69,7 @@ export default {
         const submitForm = () => {
             login.value.validate((valid) => {
                 if (valid) {
-                    // localStorage.setItem("ms_username", param.username);
+                    localStorage.setItem("ms_username", param.username);
                     _Login();
 
                 } else {
@@ -85,25 +85,21 @@ export default {
         const toSign = () => {
             router.replace("/signup");
         };
-        
+
         const _Login = () => {
-            console.log("login");
             Login(param).then((res) => {
                 console.log(res)
-
                 if (res.code == 0) {
                     ElMessage.success("登录成功");
-                    router.push("/");
+                    router.push("/information");
                 } else {
                     ElMessage.warning("检查账号密码");
                 }
-
             })
                 .catch((res) => {
                     ElMessage.error("登录失败");
                 });
         };
-
 
         return {
             param,

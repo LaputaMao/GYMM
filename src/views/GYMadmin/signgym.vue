@@ -66,12 +66,6 @@
       </el-form>
 
     </div>
-    <!-- <div>
-      <el-button type="text">一体化编码规范</el-button>
-      <el-card class="box-card">
-        <img src="../../assets/img/code.png" class="image">
-      </el-card>
-    </div> -->
   </div>
 </template>
 
