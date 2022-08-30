@@ -4,7 +4,7 @@ import Home from "../views/Home.vue";
 const routes = [
     {
         path: '/',
-        redirect: '/information'
+        redirect: '/login'
     },
     {
         path: "/",
@@ -61,6 +61,23 @@ const routes = [
                 },
                 component: () => import( /* webpackChunkName: "disaster-show" */ "../views/GYMadmin/fixgym.vue")
             },
+            {
+                path: "/fixsite",
+                name: "fixsite",
+                meta: {
+                    title: '场所信息修改'
+                },
+                component: () => import( /* webpackChunkName: "disaster-show" */ "../views/GYMadmin/fixsite.vue")
+            },
+            {
+                path: "/newsite",
+                name: "newsite",
+                meta: {
+                    title: '新建场所'
+                },
+                component: () => import( /* webpackChunkName: "disaster-show" */ "../views/GYMadmin/newsite.vue")
+            },
+
 
             /*================================================================================= 以下为模板默认目录*/
 
@@ -223,8 +240,8 @@ router.beforeEach((to, from, next) => {
     //测试用户权限
 
 
-    console.log(role);
-    console.log(to.path);
+    // console.log(role);
+    // console.log(to.path);
     if (role == "admin") {
         if (to.path == '/appointment' || to.path == '/information' || to.path == '/signgym') {
             next('/403');

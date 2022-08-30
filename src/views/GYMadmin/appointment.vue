@@ -12,16 +12,16 @@
             <el-form :model="param" status-icon :rules="rules" ref="upform" label-width="100px" class="demo-ruleForm">
                 <!-- 上传用户名 -->
 
-                <el-form-item label="场地编号" prop="area_id">
-                    <el-input v-model="param.area_id" placeholder="id"></el-input>
+                <el-form-item label="场地编号" prop="areaId">
+                    <el-input v-model="param.areaId" placeholder="id"></el-input>
                 </el-form-item>
 
-                <el-form-item label="起始时间" prop="start_time">
-                    <el-input v-model="param.start_time" placeholder="start"></el-input>
+                <el-form-item label="起始时间" prop="startTime">
+                    <el-input v-model="param.startTime" placeholder="start"></el-input>
                 </el-form-item>
 
-                <el-form-item label="终止时间" prop="end_time">
-                    <el-input v-model="param.end_time" placeholder="end"></el-input>
+                <el-form-item label="终止时间" prop="endTime">
+                    <el-input v-model="param.endTime" placeholder="end"></el-input>
                 </el-form-item>
 
                 <el-form-item label="最大人流量" prop="count">
@@ -59,7 +59,7 @@
 
 
                 <el-form-item>
-                    <el-button type="primary" @click="submitForm()">提交</el-button>
+                    <el-button type="primary" @click="Create_order()">提交</el-button>
                     <!-- <el-button type="primary" @click="getdata">提交</el-button> -->
                     <el-button @click="resetForm()">重置</el-button>
                 </el-form-item>
@@ -81,31 +81,30 @@ export default {
     setup() {
         const router = useRouter();
         const param = reactive({
-            area_id: "1001",
-            start_time: "9:00",
-            end_time: "21:00",
+            areaId: "1001",
+            startTime: "2022-08-30T01:23:53.879Z",
+            endTime: "2022-08-30T07:23:53.879Z",
             count: "100"
         });
 
         const rules = {
-            username: [
-                { required: true, message: '请输入', trigger: 'blur' },
-            ],
-            code: [
-                { required: true, message: '请输入', trigger: 'blur' },
-                { min: 36, max: 36, message: '长度为36位', trigger: 'blur' }
-            ],
-            description: [
-                { required: true, message: '请填输入', trigger: 'blur' }
-            ]
+            // username: [
+            //     { required: true, message: '请输入', trigger: 'blur' },
+            // ],
+            // code: [
+            //     { required: true, message: '请输入', trigger: 'blur' },
+            //     { min: 36, max: 36, message: '长度为36位', trigger: 'blur' }
+            // ],
+            // description: [
+            //     { required: true, message: '请填输入', trigger: 'blur' }
+            // ]
         };
         const upform = ref(null);
-        const submitForm = () => {
+        const Create_order = () => {
             upform.value.validate((valid) => {
                 if (valid) {
                     // alert('submit!');
-                    console.log(param);
-                    _UpForm();
+                    _CreateOrder();
                 } else {
                     console.log('error submit!!');
                     return false;
@@ -115,12 +114,12 @@ export default {
         };
 
         const resetForm = () => {
-            param.area_id = "",
-                param.start_time = "",
-                param.end_time = "",
+            param.areaId = "",
+                param.startTime = "",
+                param.endTime = "",
                 param.count = ""
         };
-        const _UpForm = () => {
+        const _CreateOrder = () => {
             console.log(param);
             CreateOrder(param).then((res) => {
                 console.log(res)
@@ -138,14 +137,11 @@ export default {
                 });
         };
 
-
-
-
         return {
             param,
             rules,
             upform,
-            submitForm,
+            Create_order,
             resetForm,
         };
 

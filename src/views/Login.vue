@@ -69,7 +69,6 @@ export default {
         const submitForm = () => {
             login.value.validate((valid) => {
                 if (valid) {
-                    localStorage.setItem("ms_username", param.username);
                     _Login();
 
                 } else {
@@ -88,8 +87,11 @@ export default {
 
         const _Login = () => {
             Login(param).then((res) => {
-                console.log(res)
+                // console.log(res)
                 if (res.code == 0) {
+                    sessionStorage.setItem("ms_username", param.username);
+                    console.log(res);
+                    sessionStorage.setItem("token", res.data);
                     ElMessage.success("登录成功");
                     router.push("/information");
                 } else {

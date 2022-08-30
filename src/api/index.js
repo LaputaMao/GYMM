@@ -15,14 +15,7 @@ export const Login = params => {
         data: params
     });
 };
-//注册健身房
-export const UpForm = params => {
-    return request({
-        url: '/api/gym/info',
-        method: 'post',
-        params: params
-    });
-};
+
 //注册
 export const SignUp = params => {
     return request({
@@ -31,24 +24,65 @@ export const SignUp = params => {
         params: params
     });
 };
+
 //创建预约
-export const CreateOrder = params => {
+export const CreateOrder = query => {
     return request({
-        url: '/api/gym/create',
+        url: '/api/gym/appointment',
         method: 'post',
-        params: params
+        data: query
     });
 };
-//修改健身房信息
-export const FixGymInfo = params => {
+
+//注册健身房
+export const UpForm = query => {
     return request({
         url: '/api/gym/info',
         method: 'post',
-        params: params
+        data: query,
+        headers: { 'Auth': sessionStorage.getItem('token') }
+    });
+};
+
+//健身房图片上传
+export const UpHeadshot = query => {
+    return request({
+        url: '/api/gym/headshot',
+        method: 'post',
+        data: query
+    });
+};
+
+//修改健身房信息
+export const FixGymInfo = query => {
+    return request({
+        url: '/api/gym/info',
+        method: 'put',
+        data: query,
+        headers: { 'Auth': sessionStorage.getItem('token') }
     })
-}
+};
 
+//新建场所
+export const NewSite = params => {
+    return request({
+        url: '/api/gym/area',
+        method: 'post',
+        data: params,
+        headers: { 'Auth': sessionStorage.getItem('token') }
 
+    })
+};
+
+//修改场所信息
+export const FixSite = params => {
+    return request({
+        url: '/api/gym/area',
+        method: 'put',
+        data: params,
+        headers: { 'Auth': sessionStorage.getItem('token') }
+    })
+};
 
 
 

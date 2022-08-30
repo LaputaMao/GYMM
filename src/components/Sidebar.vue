@@ -7,15 +7,15 @@
                     <el-submenu :index="item.index" :key="item.index">
                         <template #title>
                             <i :class="item.icon"></i>
-                            <span>{{ item.title }}</span>
+                            <span>{{  item.title  }}</span>
                         </template>
                         <template v-for="subItem in item.subs">
                             <el-submenu v-if="subItem.subs" :index="subItem.index" :key="subItem.index">
-                                <template #title>{{ subItem.title }}</template>
+                                <template #title>{{  subItem.title  }}</template>
                                 <el-menu-item v-for="(threeItem, i) in subItem.subs" :key="i" :index="threeItem.index">
-                                    {{ threeItem.title }}</el-menu-item>
+                                    {{  threeItem.title  }}</el-menu-item>
                             </el-submenu>
-                            <el-menu-item v-else :index="subItem.index" :key="subItem.index">{{ subItem.title }}
+                            <el-menu-item v-else :index="subItem.index" :key="subItem.index">{{  subItem.title  }}
                             </el-menu-item>
                         </template>
                     </el-submenu>
@@ -23,7 +23,7 @@
                 <template v-else>
                     <el-menu-item :index="item.index" :key="item.index">
                         <i :class="item.icon"></i>
-                        <template #title>{{ item.title }}</template>
+                        <template #title>{{  item.title  }}</template>
                     </el-menu-item>
                 </template>
             </template>
@@ -63,6 +63,17 @@ export default {
                         index: "/information",
                         title: "健身房通知",
                     },
+                    {
+                        icon: "el-icon-lx-global",
+                        index: "/newsite",
+                        title: "新建场地",
+                    },
+                    {
+                        icon: "el-icon-pie-chart",
+                        index: "/fixsite",
+                        title: "场地信息修改",
+                    },
+
                 ]
             },
             // {

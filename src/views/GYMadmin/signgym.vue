@@ -24,8 +24,8 @@
           <el-input v-model="param.introduction" placeholder="描述"></el-input>
         </el-form-item>
 
-        <el-form-item label="健身房证件号" prop="adcode">
-          <el-input v-model="param.adcode" placeholder="证件号"></el-input>
+        <el-form-item label="地址编号" prop="adcode">
+          <el-input v-model="param.adcode" placeholder="地址编号"></el-input>
         </el-form-item>
 
         <el-form-item label="地址" prop="detailLocation">
@@ -40,7 +40,7 @@
           <el-input v-model="param.sparePhone" placeholder="opentime"></el-input>
         </el-form-item>
 
-        <el-form-item label="场地1" prop="area_1">
+        <!-- <el-form-item label="场地1" prop="area_1">
           <el-input v-model="param.area_data[0].name" placeholder="名称： "></el-input>
         </el-form-item>
         <el-form-item label=" " prop="area_1_">
@@ -59,7 +59,7 @@
         </el-form-item>
         <el-form-item label=" " prop="area_3_">
           <el-input v-model="param.area_data[2].description" placeholder="简介： "></el-input>
-        </el-form-item>
+        </el-form-item> -->
 
 
         <el-form-item>
@@ -88,15 +88,15 @@ export default {
       // gym_id: '100001001010',
       name: 'sparkGYM',
       introduction: 'this gym',
-      adcode: '0110100010101',
+      adcode: 110101,
       detailLocation: '北京海淀区',
       mainPhone: '123456',
-      sparePhone: '1234567',
-      area_data: [
-        { name: "力量区", description: "this" },
-        { name: "有氧区", description: "this" },
-        { name: "游泳区", description: "this" }
-      ]
+      sparePhone: '1234567'
+      // area_data: [
+      //   { name: "力量区", description: "this" },
+      //   { name: "有氧区", description: "this" },
+      //   { name: "游泳区", description: "this" }
+      // ]
     });
 
     const rules = {
@@ -139,12 +139,13 @@ export default {
 
     const _UpForm = () => {
       console.log(param);
+      console.log(sessionStorage.getItem('token'));
       UpForm(param).then((res) => {
         console.log(res)
 
-        if (res.code == 200) {
+        if (res.code == 0) {
           ElMessage.success("健身房注册成功");
-          router.replace("/disastershow");
+          // router.replace("/");
         } else {
           ElMessage.warning("请检查输入信息");
         }
@@ -168,49 +169,6 @@ export default {
 
 
   }
-
-  // data() {
-  //   return {
-  //     ruleForm: {
-  //       username: '',
-  //       code: '',
-  //       desc: ''
-  //     },
-  //     rules: {
-  //       username: [
-  //         { required: true, message: '请输入用户名', trigger: 'blur' },
-
-  //       ],
-  //       code: [
-  //         { required: true, message: '请输入灾害码', trigger: 'blur' },
-  //         { min: 36, max: 36, message: '长度为36位', trigger: 'blur' }
-  //       ],
-  //       desc: [
-  //         { required: true, message: '请填输入灾情描述', trigger: 'blur' }
-  //       ]
-  //     }
-  //   };
-  // },
-  // methods: {
-  //   getdata(){
-  //      console.log(this.ruleForm)
-  //   },
-  //   submitForm(formName) {
-  //     this.$refs[formName].validate((valid) => {
-  //       if (valid) {
-  //         alert('submit!');
-  //         console.log('success submit!!');
-  //         console.log(this.resetForm.username);
-  //       } else {
-  //         console.log('error submit!!');
-  //         return false;
-  //       }
-  //     });
-  //   },
-  //   resetForm(formName) {
-  //     this.$refs[formName].resetFields();
-  //   }
-  // }
 }
 </script>
 

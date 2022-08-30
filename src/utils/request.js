@@ -5,7 +5,7 @@ const service = axios.create({
     // easy-mock服务挂了，暂时不使用了
     //baseURL: 'https://www.baidu.com',
     
-    timeout: 5000
+    timeout: 10000
 });
 
 service.interceptors.request.use(
