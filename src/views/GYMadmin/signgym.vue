@@ -67,7 +67,14 @@
           <!-- <el-button type="primary" @click="getdata">提交</el-button> -->
           <el-button @click="resetForm()">重置</el-button>
         </el-form-item>
+
+        <!-- 图片上传 -->
+
+        <!-- <el-form-item>
+          <el-button type="primary" @click="submitShot()">上传</el-button>
+        </el-form-item> -->
       </el-form>
+
 
     </div>
   </div>
@@ -80,10 +87,13 @@ import { onMounted } from "vue";
 import { UpForm } from "../../api/index";
 import { ElMessage } from "element-plus";
 import { useRouter } from "vue-router";
+// import { Delete, Download, Plus, ZoomIn } from '@element-plus/icons-vue';
 
 export default {
   setup() {
     const router = useRouter();
+
+
     const param = reactive({
       // gym_id: '100001001010',
       name: 'sparkGYM',
@@ -116,13 +126,16 @@ export default {
       //   param.gym_address = '',
       //   param.gym_certificate = '',
       //   param.gym_description = '',
-      //   param.gym_id = '',
-      //   param.gym_name = '',
-      //   param.gym_opentime = ''
 
     };
 
     const upform = ref(null);
+
+
+    const submitShot = () => {
+      return true;
+    };
+
     const submitForm = () => {
       upform.value.validate((valid) => {
         if (valid) {
@@ -156,15 +169,14 @@ export default {
         });
     };
 
-
-
-
     return {
       param,
       rules,
       upform,
       submitForm,
       resetForm,
+      submitShot,
+
     };
 
 
@@ -173,20 +185,4 @@ export default {
 </script>
 
 <style>
-/* 走马灯style */
-/* .el-carousel__item h3 {
-    color: #475669;
-    font-size: 14px;
-    opacity: 0.75;
-    line-height: 150px;
-    margin: 0;
-  }
-
-  .el-carousel__item:nth-child(2n) {
-     background-color: #99a9bf;
-  }
-  
-  .el-carousel__item:nth-child(2n+1) {
-     background-color: #d3dce6;
-  } */
 </style>
