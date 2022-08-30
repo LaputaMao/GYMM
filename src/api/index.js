@@ -39,6 +39,14 @@ export const CreateOrder = params => {
         params: params
     });
 };
+//修改健身房信息
+export const FixGymInfo = params => {
+    return request({
+        url: '/api/gym/info',
+        method: 'post',
+        params: params
+    })
+}
 
 
 

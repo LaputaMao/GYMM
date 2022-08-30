@@ -53,11 +53,11 @@ export default {
                         index: "/signgym",
                         title: "注册健身房",
                     },
-                    // {
-                    //     icon: "el-icon-lx-copy",
-                    //     index: "/disastervisual",
-                    //     title: "健身房信息",
-                    // },
+                    {
+                        icon: "el-icon-lx-copy",
+                        index: "/fixgym",
+                        title: "健身房信息修改",
+                    },
                     {
                         icon: "el-icon-lx-copy",
                         index: "/information",

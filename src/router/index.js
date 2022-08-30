@@ -53,6 +53,14 @@ const routes = [
                 },
                 component: () => import( /* webpackChunkName: "disaster-show" */ "../views/GYMadmin/information.vue")
             },
+            {
+                path: "/fixgym",
+                name: "fixgym",
+                meta: {
+                    title: '健身房信息修改'
+                },
+                component: () => import( /* webpackChunkName: "disaster-show" */ "../views/GYMadmin/fixgym.vue")
+            },
 
             /*================================================================================= 以下为模板默认目录*/
 
