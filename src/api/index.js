@@ -45,11 +45,15 @@ export const UpForm = query => {
 };
 
 //健身房图片上传
-export const UpHeadshot = query => {
+export const Headshot = query => {
     return request({
         url: '/api/gym/headshot',
         method: 'post',
-        data: query
+        data: query,
+        headers: {
+            "Content-Type": "multipart/form-data",
+            'Auth': sessionStorage.getItem('token')
+        },
     });
 };
 
@@ -84,8 +88,26 @@ export const FixSite = params => {
     })
 };
 
+//添加会员卡
+export const NewCard = params => {
+    return request({
+        url: '/api/gym/card',
+        method: 'post',
+        data: params,
+        headers: { 'Auth': sessionStorage.getItem('token') }
 
+    })
+};
 
+//修改会员卡
+export const FixCard = params => {
+    return request({
+        url: '/api/gym/card',
+        method: 'put',
+        data: params,
+        headers: { 'Auth': sessionStorage.getItem('token') }
+    })
+};
 
 
 

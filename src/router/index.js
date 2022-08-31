@@ -77,6 +77,22 @@ const routes = [
                 },
                 component: () => import( /* webpackChunkName: "disaster-show" */ "../views/GYMadmin/newsite.vue")
             },
+            {
+                path: "/newcard",
+                name: "newcard",
+                meta: {
+                    title: '新建场所'
+                },
+                component: () => import( /* webpackChunkName: "disaster-show" */ "../views/GYMadmin/newcard.vue")
+            },
+            {
+                path: "/fixcard",
+                name: "fixcard",
+                meta: {
+                    title: '新建场所'
+                },
+                component: () => import( /* webpackChunkName: "disaster-show" */ "../views/GYMadmin/fixcard.vue")
+            },
 
 
             /*================================================================================= 以下为模板默认目录*/

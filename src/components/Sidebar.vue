@@ -73,6 +73,16 @@ export default {
                         index: "/fixsite",
                         title: "场地信息修改",
                     },
+                    {
+                        icon: "el-icon-lx-emoji",
+                        index: "/newcard",
+                        title: "添加会员卡",
+                    },
+                    {
+                        icon: "el-icon-pie-chart",
+                        index: "/fixcard",
+                        title: "修改会员卡",
+                    },
 
                 ]
             },

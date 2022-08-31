@@ -40,27 +40,6 @@
           <el-input v-model="param.sparePhone" placeholder="opentime"></el-input>
         </el-form-item>
 
-        <!-- <el-form-item label="场地1" prop="area_1">
-          <el-input v-model="param.area_data[0].name" placeholder="名称： "></el-input>
-        </el-form-item>
-        <el-form-item label=" " prop="area_1_">
-          <el-input v-model="param.area_data[0].description" placeholder="简介： "></el-input>
-        </el-form-item>
-
-        <el-form-item label="场地2" prop="area_2">
-          <el-input v-model="param.area_data[1].name" placeholder="名称： "></el-input>
-        </el-form-item>
-        <el-form-item label=" " prop="area_2_">
-          <el-input v-model="param.area_data[1].description" placeholder="简介： "></el-input>
-        </el-form-item>
-
-        <el-form-item label="场地3" prop="area_3">
-          <el-input v-model="param.area_data[2].name" placeholder="名称： "></el-input>
-        </el-form-item>
-        <el-form-item label=" " prop="area_3_">
-          <el-input v-model="param.area_data[2].description" placeholder="简介： "></el-input>
-        </el-form-item> -->
-
 
         <el-form-item>
           <el-button type="primary" @click="submitForm()">提交</el-button>
@@ -69,6 +48,15 @@
         </el-form-item>
 
         <!-- 图片上传 -->
+
+        <el-upload class="upload-demo" ref="upload" action="api/gym/headshot" :headers="tokenObj"
+          :on-preview="handlePreview" :on-remove="handleRemove" :data="objData" :auto-upload="false"
+          :on-success="onSuccess" style="margin-left: 10%">
+          <el-button style="margin-top: 60px" size="small" type="primary">选取</el-button>
+          <el-button style="margin-top: 60px; margin-left: 30px" size="small" type="success" @click.stop="submitUpload">
+            上传</el-button>
+          <div class="el-upload__tip">不限文件格式。不超过1MB</div>
+        </el-upload>
 
         <!-- <el-form-item>
           <el-button type="primary" @click="submitShot()">上传</el-button>
@@ -82,9 +70,9 @@
 
 
 <script>
-import { ref, reactive } from "vue";
+import { ref, reactive, getCurrentInstance } from "vue";
 import { onMounted } from "vue";
-import { UpForm } from "../../api/index";
+import { Headshot } from "../../api/index";
 import { ElMessage } from "element-plus";
 import { useRouter } from "vue-router";
 // import { Delete, Download, Plus, ZoomIn } from '@element-plus/icons-vue';
@@ -92,8 +80,12 @@ import { useRouter } from "vue-router";
 export default {
   setup() {
     const router = useRouter();
-
-
+    const { proxy } = getCurrentInstance();
+    // const token_ = sessionStorage.getItem('token');
+    const tokenObj = {
+      'Auth': sessionStorage.getItem('token'),
+      // "Content-Type": "multipart/form-data",
+    };
     const param = reactive({
       // gym_id: '100001001010',
       name: 'sparkGYM',
@@ -108,6 +100,26 @@ export default {
       //   { name: "游泳区", description: "this" }
       // ]
     });
+    const objData = reactive({
+      // username: localStorage.getItem("ms_username"),
+      gymName: param.name,
+    });
+
+
+    const submitUpload = () => {
+      console.log(123);
+      objData.gymName = param.name.value;
+      proxy.$refs.upload.submit();
+      // console.log("success!");
+    };
+    const handlePreview = (a) => {
+      console.log(a);
+    };
+    const handleRemove = () => { };
+    const onSuccess = () => {
+      ElMessage.success("上传成功");
+    };
+
 
     const rules = {
       username: [
@@ -176,7 +188,12 @@ export default {
       submitForm,
       resetForm,
       submitShot,
-
+      submitUpload,
+      handlePreview,
+      handleRemove,
+      objData,
+      tokenObj,
+      onSuccess,
     };
 
 
