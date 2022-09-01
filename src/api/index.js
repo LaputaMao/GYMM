@@ -161,6 +161,50 @@ export const PubNotice = params => {
 };
 
 
+//平台管理员健身房列表获取
+export const AdminGym = params =>{
+    return request({
+        url:'/api/admin/gym',
+        method:'get',
+        params:params
+    })
+}
+//平台管理员健身房状态修改
+export const AdminGymChange = params =>{
+    return request({
+        url:'/api/admin/gym',
+        method:'post',
+        params:params
+    })
+}
+
+//平台管理员平台数据分析
+export const AdminData = params =>{
+    return request({
+        url:'/api/admin/data',
+        method:'get',
+        params:params
+    })
+}
+
+//平台管理员广告列表
+export const AdminAdData = params =>{
+    return request({
+        url:'/api/admin/ad',
+        method:'get',
+        params:params
+    })
+}
+
+//平台管理员广告状态修改
+export const AdminAdChange = params =>{
+    return request({
+        url:'/api/admin/ad',
+        method:'post',
+        params:params
+    })
+}
+
 
 
 

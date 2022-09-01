@@ -259,8 +259,8 @@ router.beforeEach((to, from, next) => {
     document.title = `${to.meta.title} | Disaster Alarm Platform `;
     // const role = localStorage.getItem('ms_username');
 
-    // const role = "admin";
-    const role = "user";
+    const role = "admin";
+    // const role = "user";
     //测试用户权限
 
 
