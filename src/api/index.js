@@ -132,13 +132,33 @@ export const GetGymInfo = params => {
 //获取健身房图片
 export const GetGymHeadshot = params => {
     return request({
-        url: '/api/gym/headshot/'+params,
+        url: '/api/gym/headshot/' + params,
         method: 'get',
         // params: params,
         responseType: 'blob',
     })
 };
 
+//获取通知列表
+export const GetNoticeList = params => {
+    return request({
+        url: '/api/gym/notification',
+        method: 'get',
+        // data: params,
+        headers: { 'Auth': sessionStorage.getItem('token') }
+    })
+};
+
+
+//发布通知
+export const PubNotice = params => {
+    return request({
+        url: '/api/gym/notification',
+        method: 'post',
+        data: params,
+        headers: { 'Auth': sessionStorage.getItem('token') }
+    })
+};
 
 
 

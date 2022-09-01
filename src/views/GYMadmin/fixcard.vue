@@ -11,6 +11,10 @@
         <div class="container">
             <el-form :model="param" status-icon :rules="rules" ref="upform" label-width="100px" class="demo-ruleForm">
 
+                <el-form-item label="会员卡id" prop="id">
+                    <el-input v-model="param.id" placeholder="name"></el-input>
+                </el-form-item>
+
                 <el-form-item label="会员卡名称" prop="name">
                     <el-input v-model="param.name" placeholder="name"></el-input>
                 </el-form-item>
@@ -89,7 +93,7 @@ export default {
             console.log(sessionStorage.getItem('token'));
             FixCard(param).then((res) => {
                 console.log(res)
-
+                // console.log(param.id)
                 if (res.code == 0) {
                     ElMessage.success("会员卡修改成功");
                     // router.replace("/");

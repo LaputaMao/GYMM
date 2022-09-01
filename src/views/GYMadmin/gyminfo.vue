@@ -65,7 +65,8 @@
                             <template #header>
                                 {{ i.name }}
                             </template>
-                            {{ "有效期：" + i.duration }}<br />
+                            {{ "会员卡id：" + i.id }}<br /><br />
+                            {{ "有效期：" + i.duration }}<br /><br />
                             {{ "价格：" + i.price }}<br />
                         </el-card>
                     </el-card>
