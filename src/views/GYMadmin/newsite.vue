@@ -24,6 +24,16 @@
                     <!-- <el-button type="primary" @click="getdata">提交</el-button> -->
                     <el-button @click="resetForm()">重置</el-button>
                 </el-form-item>
+
+                <el-upload class="upload-demo" ref="upload" :action="siteUrl" :headers="tokenObj"
+                    :on-preview="handlePreview" :on-remove="handleRemove" :data="objData" :auto-upload="false"
+                    :on-success="onSuccess" style="margin-left: 10%">
+                    <el-button style="margin-top: 60px" size="small" type="primary">选取</el-button>
+                    <el-button style="margin-top: 60px; margin-left: 30px" size="small" type="success"
+                        @click.stop="submitUpload">
+                        上传</el-button>
+                    <div class="el-upload__tip">不限图片格式。不超过20MB</div>
+                </el-upload>
             </el-form>
 
         </div>
@@ -32,7 +42,7 @@
   
   
   <script>
-import { ref, reactive } from "vue";
+import { ref, reactive, getCurrentInstance } from "vue";
 import { onMounted } from "vue";
 import { NewSite } from "../../api/index";
 import { ElMessage } from "element-plus";
@@ -41,11 +51,21 @@ import { useRouter } from "vue-router";
 export default {
     setup() {
         const router = useRouter();
+        const { proxy } = getCurrentInstance();
+        // const token_ = sessionStorage.getItem('token');
+        const tokenObj = {
+            'Auth': sessionStorage.getItem('token'),
+        };
         const param = reactive({
-            // gym_id: '100001001010',
+            id: 1,
             name: 'siteOne',
             introduction: 'this siteOne',
         });
+        const objData = reactive({
+            // username: localStorage.getItem("ms_username"),
+            gymName: param.name,
+        });
+        const siteUrl = "api/gym/area/picture/" + param.id;
 
         const rules = {
             username: [
@@ -85,6 +105,20 @@ export default {
             });
         };
 
+        const submitUpload = () => {
+            console.log("areapictureUpload");
+            objData.gymName = param.name.value;
+            proxy.$refs.upload.submit();
+            // console.log("success!");
+        };
+        const handlePreview = (a) => {
+            console.log(a);
+        };
+        const handleRemove = () => { };
+        const onSuccess = () => {
+            ElMessage.success("上传成功");
+        };
+
         const _UpForm = () => {
             console.log(param);
             console.log(sessionStorage.getItem('token'));
@@ -110,6 +144,13 @@ export default {
             upform,
             submitForm,
             resetForm,
+            submitUpload,
+            onSuccess,
+            tokenObj,
+            objData,
+            handlePreview,
+            handleRemove,
+            siteUrl,
         };
 
 
@@ -120,18 +161,18 @@ export default {
   <style>
   /* 走马灯style */
   /* .el-carousel__item h3 {
-          color: #475669;
-          font-size: 14px;
-          opacity: 0.75;
-          line-height: 150px;
-          margin: 0;
-        }
-      
-        .el-carousel__item:nth-child(2n) {
-           background-color: #99a9bf;
-        }
-        
-        .el-carousel__item:nth-child(2n+1) {
-           background-color: #d3dce6;
-        } */
+                            color: #475669;
+                            font-size: 14px;
+                            opacity: 0.75;
+                            line-height: 150px;
+                            margin: 0;
+                          }
+                        
+                          .el-carousel__item:nth-child(2n) {
+                             background-color: #99a9bf;
+                          }
+                          
+                          .el-carousel__item:nth-child(2n+1) {
+                             background-color: #d3dce6;
+                          } */
   </style>

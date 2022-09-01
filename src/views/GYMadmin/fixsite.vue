@@ -42,9 +42,9 @@ export default {
     setup() {
         const router = useRouter();
         const param = reactive({
-            // gym_id: '100001001010',
-            name: 'siteOne',
-            introduction: 'this siteOne change',
+            id: 1,
+            name: '游泳区',
+            introduction: '游泳区简介修改：修改成功！',
         });
 
         const rules = {
@@ -111,18 +111,18 @@ export default {
   <style>
   /* 走马灯style */
   /* .el-carousel__item h3 {
-                color: #475669;
-                font-size: 14px;
-                opacity: 0.75;
-                line-height: 150px;
-                margin: 0;
-              }
-            
-              .el-carousel__item:nth-child(2n) {
-                 background-color: #99a9bf;
-              }
+                  color: #475669;
+                  font-size: 14px;
+                  opacity: 0.75;
+                  line-height: 150px;
+                  margin: 0;
+                }
               
-              .el-carousel__item:nth-child(2n+1) {
-                 background-color: #d3dce6;
-              } */
+                .el-carousel__item:nth-child(2n) {
+                   background-color: #99a9bf;
+                }
+                
+                .el-carousel__item:nth-child(2n+1) {
+                   background-color: #d3dce6;
+                } */
   </style>

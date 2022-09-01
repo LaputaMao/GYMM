@@ -21,7 +21,16 @@ export const SignUp = params => {
     return request({
         url: '/api/gym/register',
         method: 'post',
-        params: params
+        data: params,
+    });
+};
+
+//获取验证码
+export const Verified = query => {
+    return request({
+        url: '/api/user/code',
+        method: 'get',
+        params: query,
     });
 };
 
@@ -30,7 +39,8 @@ export const CreateOrder = query => {
     return request({
         url: '/api/gym/appointment',
         method: 'post',
-        data: query
+        data: query,
+        headers: { 'Auth': sessionStorage.getItem('token') }
     });
 };
 
@@ -109,7 +119,25 @@ export const FixCard = params => {
     })
 };
 
+//获取健身房信息
+export const GetGymInfo = params => {
+    return request({
+        url: '/api/gym',
+        method: 'get',
+        params: params,
+        headers: { 'Auth': sessionStorage.getItem('token') }
+    })
+};
 
+//获取健身房图片
+export const GetGymHeadshot = params => {
+    return request({
+        url: '/api/gym/headshot/'+params,
+        method: 'get',
+        // params: params,
+        responseType: 'blob',
+    })
+};
 
 
 

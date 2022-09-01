@@ -3,20 +3,19 @@
         <div class="ms-login">
             <div class="ms-title">健身房管理平台</div>
             <el-form :model="param" :rules="rules" ref="login" label-width="0px" class="ms-content">
-                <!-- <el-form-item prop="username">
-                    <el-input v-model="param.username" placeholder="username">
-                        <template #prepend>
-                            <el-button icon="el-icon-user"></el-button>
-                        </template>
-                    </el-input>
-                </el-form-item> -->
+
                 <el-form-item prop="phone">
                     <el-input v-model="param.phone" placeholder="phone">
                         <template #prepend>
-                            <el-button icon="el-icon-user"></el-button>
+                            <el-button icon="el-icon-phone"></el-button>
                         </template>
                     </el-input>
                 </el-form-item>
+
+                <div class="login-btn">
+                    <el-button type="primary" @click="_Verified()">获取验证码</el-button>
+                </div>
+
                 <el-form-item prop="password">
                     <el-input type="password" placeholder="password" v-model="param.password">
                         <template #prepend>
@@ -25,22 +24,14 @@
                     </el-input>
                 </el-form-item>
 
-                <!-- <el-form-item prop="code">
-                    <el-input v-model="param.code" placeholder="code">
-                        <template #prepend>
-                            <el-button icon="el-icon-user"></el-button>
-                        </template>
-                    </el-input>
-                </el-form-item> -->
-
-                <el-form-item prop="email">
-                    <el-input v-model="param.email" placeholder="email">
+                <el-form-item prop="code">
+                    <el-input v-model="param.code" placeholder="验证码">
                         <template #prepend>
                             <el-button icon="el-icon-user"></el-button>
                         </template>
                     </el-input>
                 </el-form-item>
-                <el-form-item prop="identity">
+                <!-- <el-form-item prop="identity">
                     <el-input v-model="param.identity" placeholder="identity">
                         <template #prepend>
                             <el-button icon="el-icon-user"></el-button>
@@ -53,7 +44,7 @@
                             <el-button icon="el-icon-user"></el-button>
                         </template>
                     </el-input>
-                </el-form-item>
+                </el-form-item> -->
 
                 <div class="login-btn">
                     <el-button type="primary" @click="finishSign()">注册</el-button>
@@ -72,19 +63,15 @@ import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import { ElMessage } from "element-plus";
 import { onMounted } from "vue"
-import { SignUp } from "../api/index";
+import { SignUp, Verified } from "../api/index";
 
 export default {
     setup() {
         const router = useRouter();
         const param = reactive({
-            username: "",
+            code: "",
             phone: "",
             password: "",
-            // code: ""
-            email: "",
-            identity: "",
-            city: ""
         });
 
         const rules = {
@@ -116,6 +103,22 @@ export default {
         const store = useStore();
         store.commit("clearTags");
 
+        const _Verified = () => {
+            console.log("获取验证码");
+            const _phone = param.phone;
+            Verified(_phone).then((res) => {
+                console.log(res)
+                if (res.code == 200) {
+                    ElMessage.success("获取成功");
+                } else {
+                    ElMessage.warning("检查电话");
+                }
+            })
+                .catch((res) => {
+                    ElMessage.error("获取失败");
+                });
+        }
+
         const _SignUp = () => {
             console.log("sign");
             SignUp(param).then((res) => {
@@ -144,7 +147,8 @@ export default {
             rules,
             login,
             toLogin,
-            finishSign
+            finishSign,
+            _Verified,
         };
 
 

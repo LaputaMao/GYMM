@@ -81,7 +81,7 @@ const routes = [
                 path: "/newcard",
                 name: "newcard",
                 meta: {
-                    title: '新建场所'
+                    title: '新建会员卡'
                 },
                 component: () => import( /* webpackChunkName: "disaster-show" */ "../views/GYMadmin/newcard.vue")
             },
@@ -89,9 +89,17 @@ const routes = [
                 path: "/fixcard",
                 name: "fixcard",
                 meta: {
-                    title: '新建场所'
+                    title: '修改会员卡'
                 },
                 component: () => import( /* webpackChunkName: "disaster-show" */ "../views/GYMadmin/fixcard.vue")
+            },
+            {
+                path: "/gyminfo",
+                name: "gyminfo",
+                meta: {
+                    title: '健身房信息展示'
+                },
+                component: () => import( /* webpackChunkName: "disaster-show" */ "../views/GYMadmin/gyminfo.vue")
             },
 
 
@@ -271,16 +279,6 @@ router.beforeEach((to, from, next) => {
             next();
         }
     }
-    // if (!role && to.path !== '/login'||!role && to.path !== '/signup') {
-    //     next('/login');
-    // } else if (to.meta.permission) {
-    //     role === 'admin'
-    //         ? next()
-    //         : next('/403');
-    // } else {
-    //     next();
-    // }
-    next();
 });
 
 export default router;

@@ -81,7 +81,7 @@ export default {
     setup() {
         const router = useRouter();
         const param = reactive({
-            areaId: "1001",
+            areaId: "1",
             startTime: "2022-08-30T01:23:53.879Z",
             endTime: "2022-08-30T07:23:53.879Z",
             count: "100"
@@ -124,7 +124,7 @@ export default {
             CreateOrder(param).then((res) => {
                 console.log(res)
 
-                if (res.code == 200) {
+                if (res.code == 0) {
                     ElMessage.success("预约时段创建成功");
 
                 } else {

@@ -46,10 +46,11 @@ export default {
     setup() {
         const router = useRouter();
         const param = reactive({
-            // gym_id: '100001001010',
-            name: 'siteOne',
+            id: 0,
+            name: '一年会员',
             duration: 100,
             price: 1599,
+            // gym: 1,
         });
 
         const rules = {

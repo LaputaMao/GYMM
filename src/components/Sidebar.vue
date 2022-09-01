@@ -44,6 +44,11 @@ export default {
                 title: "健身房管理",
                 subs: [
                     {
+                        icon: "el-icon-pie-chart",
+                        index: "/gyminfo",
+                        title: "健身房信息",
+                    },
+                    {
                         icon: "el-icon-lx-home",
                         index: "/appointment",
                         title: "创建预约",
@@ -83,6 +88,7 @@ export default {
                         index: "/fixcard",
                         title: "修改会员卡",
                     },
+
 
                 ]
             },

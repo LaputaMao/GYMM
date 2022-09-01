@@ -55,12 +55,9 @@
           <el-button style="margin-top: 60px" size="small" type="primary">选取</el-button>
           <el-button style="margin-top: 60px; margin-left: 30px" size="small" type="success" @click.stop="submitUpload">
             上传</el-button>
-          <div class="el-upload__tip">不限文件格式。不超过1MB</div>
+          <div class="el-upload__tip">不限图片格式。不超过20MB</div>
         </el-upload>
 
-        <!-- <el-form-item>
-          <el-button type="primary" @click="submitShot()">上传</el-button>
-        </el-form-item> -->
       </el-form>
 
 
@@ -84,7 +81,6 @@ export default {
     // const token_ = sessionStorage.getItem('token');
     const tokenObj = {
       'Auth': sessionStorage.getItem('token'),
-      // "Content-Type": "multipart/form-data",
     };
     const param = reactive({
       // gym_id: '100001001010',
@@ -94,11 +90,7 @@ export default {
       detailLocation: '北京海淀区',
       mainPhone: '123456',
       sparePhone: '1234567'
-      // area_data: [
-      //   { name: "力量区", description: "this" },
-      //   { name: "有氧区", description: "this" },
-      //   { name: "游泳区", description: "this" }
-      // ]
+
     });
     const objData = reactive({
       // username: localStorage.getItem("ms_username"),

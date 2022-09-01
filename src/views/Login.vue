@@ -93,7 +93,7 @@ export default {
                     console.log(res);
                     sessionStorage.setItem("token", res.data);
                     ElMessage.success("登录成功");
-                    router.push("/information");
+                    router.push("/gyminfo");
                 } else {
                     ElMessage.warning("检查账号密码");
                 }
