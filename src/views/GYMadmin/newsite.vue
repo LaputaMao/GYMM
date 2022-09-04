@@ -58,7 +58,7 @@ export default {
         };
         const param = reactive({
             id: 1,
-            name: 'siteOne',
+            name: '瑜伽',
             introduction: 'this siteOne',
         });
         const objData = reactive({

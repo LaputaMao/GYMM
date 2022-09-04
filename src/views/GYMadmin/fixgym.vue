@@ -61,8 +61,8 @@ export default {
         const router = useRouter();
         const param = reactive({
             // gym_id: '100001001010',
-            name: 'sparkGYM',
-            introduction: 'this gym',
+            name: '北邮健身房',
+            introduction: '欢迎来到北邮健身房',
             adcode: 110101,
             detailLocation: '北京海淀区',
             mainPhone: '123456',

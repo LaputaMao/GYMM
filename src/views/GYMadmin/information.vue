@@ -61,8 +61,8 @@ export default {
         const tableData = ref([]);
 
         const param = reactive({
-            title: '100001001010',
-            message: 'sparkGYM',
+            title: '五一闭馆通知',
+            message: '健身房闭馆休息四天',
 
         });
 

@@ -83,8 +83,8 @@ export default {
         const param = reactive({
             areaId: "1",
             startTime: "2022-08-30T01:23:53.879Z",
-            endTime: "2022-08-30T07:23:53.879Z",
-            count: "100"
+            endTime: "2022-08-30T15:23:53.879Z",
+            count: "150"
         });
 
         const rules = {
